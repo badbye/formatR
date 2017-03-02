@@ -89,7 +89,8 @@ tidy_block = function(text, width = getOption('width'), arrow = FALSE) {
   exprs = parse_only(text)
   if (length(exprs) == 0) return(character(0))
   exprs = if (arrow) replace_assignment(exprs) else as.list(exprs)
-  sapply(exprs, function(e) paste(base::deparse(e, width), collapse = '\n'))
+  # sapply(exprs, function(e) paste(base::deparse(e, width), collapse = '\n'))
+  sapply(exprs, function(e) paste(deparse0(e, width), collapse = '\n'))
 }
 
 # Restore the real source code from the masked text
